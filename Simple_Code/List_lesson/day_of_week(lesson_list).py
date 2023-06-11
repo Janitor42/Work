@@ -1,15 +1,16 @@
 import random
 
+lis_day_en=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
+list_day_ry=["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"]
+
+
 day=0
 answer=0
 correct_answer=0
 false_answer=0
 
-lis_day_en=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
-list_day_ry=["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"]
-
 choise = random.randint(0, len(list_day_ry) - 1)
-while correct_answer<20:
+while correct_answer<3:
     print(list_day_ry[choise], " это - ")
     answer = input()
     if answer==lis_day_en[choise]:

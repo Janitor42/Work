@@ -18,12 +18,12 @@ for i in range(1,height+1,1):
 # print()
 
 #3
-a=0
-b=height
-for i in range(1,height+1,1):
-   a+=1
-   b-=1
-   print(" "*b,"#"*a)
+# a=0
+# b=height
+# for i in range(1,height+1,1):
+#    a+=1
+#    b-=1
+#    print(" "*b,"#"*a)
 # a=height
 # b=0
 #

@@ -1,25 +1,27 @@
 #создание базы данных используя массивы
-last_name = ["Яковлев","Астахов","Иванов","Эмильен"]
+last_name = ["Яковлев","Астахов","Иванов","Петров"]
 name= ["Як","Александр","Иван"]
 second_name=["Яковлевич","Александрович ","Иванович"]
-date_of_birth=["19.01.1992", "21.2.2004","01.01.1999" ]
-group=["ЭЭГ","СПГ","ААП","пвап"]
+
+a=[]
+if len(last_name)>len(name) and len(last_name)>len(name):
+    a=last_name
 
 #Выравнивание массивов по длине
-
-for i in range(len(last_name)):
+for i in range(len(a)):
    if len(last_name)>len(name):
-       name.append("None Name")
+       name.append("||")
    elif len(last_name)>len(second_name):
-       second_name.append("None Second Name")
-   elif len(last_name)>len(date_of_birth):
-       date_of_birth.append("None Date")
+       second_name.append("||")
 
-student_names=[]
+for i in range(len(a)):
+    print(name[i],last_name[i],second_name[i])
 
-
-#Присваивание в массив студентов данные других массивов
-for i in range (len(last_name)):
-  a=last_name[i]+" "+name[i]+" "+second_name[i]+" "+date_of_birth[i]+" "+ group[i]
-  student_names.append(a)
-  print(student_names[i])
+# student_names=[]
+#
+#
+# #Присваивание в массив студентов данные других массивов
+# for i in range (len(last_name)):
+#   a=last_name[i]+" "+name[i]+" "+second_name[i]
+#   student_names.append(a)
+#   print(student_names[i])
