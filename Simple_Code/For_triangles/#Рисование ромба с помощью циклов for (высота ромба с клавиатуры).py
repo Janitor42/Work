@@ -2,13 +2,13 @@
 
  #int(input())
 a=int(input("Введите высоту ромба"))
-height=a//2
-indent=height+1
+h=a//2
+b=h+1
 x=""
 
-for i in range(1,(height+1)+a%2,1):
+for i in range(1,(h+1)+a%2,1):
     x=x+str("#")
-    print(" "*(indent-i)+x+"#"*i)
+    print(" "*(b-i)+x+"#"*i)
 
-for i in range(1,height+1,1):
-    print(" "*i+"#"*(indent-i)+"#"*(indent-i))
+for i in range(1,h+1,1):
+    print(" "*i+"#"*(b-i)+"#"*(b-i))
