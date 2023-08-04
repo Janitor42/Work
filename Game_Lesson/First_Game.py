@@ -51,10 +51,6 @@ def move_target():
                 speed=0
                 speed_platform=0
 
-
-
-
-
 import wrap_py
 wrap_py.app.start()
 
