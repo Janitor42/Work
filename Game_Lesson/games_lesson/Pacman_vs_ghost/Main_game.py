@@ -6,7 +6,7 @@ from random import randint, choice, randrange
 import Shoot_towers
 import Towers
 import Enemies
-wrap.world.create_world(1000, 900)
+wrap.world.create_world(1400, 900)
 wrap.world.set_back_color(105, 110, 110)
 
 
@@ -20,11 +20,12 @@ sprite.set_width(line1,1000)
 coins=sprite.add_text('You points '+str(Towers.points),780,750)
 """Трубы"""
 pine = []
-for i in range(0, 500, 83):
-    pine.append(sprite.add('mario-items', 30, i + 100, 'pipe'))
-    sprite.set_angle(pine[-1], 180)
-Towers.add_clouds()
-
+def create_pines():
+    for i in range(0, 500, 83):
+        pine.append(sprite.add('mario-items', 30, i + 100, 'pipe'))
+        sprite.set_angle(pine[-1], 180)
+    Towers.add_clouds()
+create_pines()
 """Сознание башен"""
 Towers.create_tower('sun',Towers.towers_on_the_shop)
 Towers.create_tower('mushroom',Towers.towers_on_the_shop)
@@ -58,7 +59,8 @@ expl_text=sprite.add_text('None',150,820)
 scene_count=1
 scene=sprite.add_text('Wave '+str(scene_count),400,400,text_color=(255,0,0),font_size=80,bold=True,font_name='Comic Sans MS')
 wait_scene=True
-long_wave=15
+long_wave=150
+
 
 """Враги"""
 enemies=[]
@@ -67,6 +69,8 @@ def create_enemies():
     if len(enemies) < 1:
         for i in range(1, long_wave):
             enemies.append(Enemies.create())
+
+
 @wrap.on_mouse_move()
 def mouse_move(pos_x, pos_y):
     sprite.move_to(target, pos_x, pos_y)
@@ -89,9 +93,30 @@ def button_left():
 def button_right():
     Towers.selections(target)
 
+def next_wave():
+    global long_wave, wait_scene, scene_count
+    long_wave += 4
+    scene_count += 1
+    wrap.sprite_text.set_text(scene, 'Wave ' + str(scene_count))
+    wait_scene = True
+    sprite.show(scene)
+    for i in Towers.towers_on_the_game:
+        sprite.hide(i['Name'])
+    Towers.towers_on_the_game.clear()
+    for i in Shoot_towers.bullet_list:
+        sprite.hide(i['Name'])
+    Shoot_towers.bullet_list.clear()
+    for i in pine:
+        sprite.hide(i)
+        pine.clear()
+    create_pines()
+    Enemies.place_start_enemies_x=900
+
+
+
 @wrap.always(15)
 def game():
-    global rotate_scene
+
     if wait_scene==True:
         create_enemies()
         wrap.sprite.set_angle(scene, sprite.get_angle(scene) + 1)
@@ -101,9 +126,13 @@ def game():
         Shoot_towers.move_bullets()
         Shoot_towers.collisions_enemies(enemies)
         Towers.looks_settings_tower(price_xp,price_speed,price_power,price_name)
-        for i in enemies:
-            print(i['HP'],i['Name'])
-        print('=======================================')
+        Enemies.move_enemies(enemies)
+    if len(enemies)<1:
+        next_wave()
+
+
+
+
 
 
 

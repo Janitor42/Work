@@ -83,8 +83,16 @@ def collisions_enemies(enemies):
             if sprite.is_collide_sprite(bullet['Name'],enemy['Name']):
                 sprite.hide(bullet['Name'])
                 bullet_list.remove(bullet)
-                enemy['HP']-=bullet['Power']
+                enemy['HP']-=bullet['Power']/10
+                wrap.sprite_text.set_text(enemy['text_name'],str(int(enemy['HP'])))
+            if enemy['HP'] <= 0:
+                sprite.hide(enemy['Name'])
+                sprite.hide(enemy['text_name'])
+                enemies.remove(enemy)
+
                 break
+
+
 
 
 

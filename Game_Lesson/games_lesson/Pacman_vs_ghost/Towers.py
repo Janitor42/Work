@@ -93,7 +93,7 @@ def collide(tower_shop,target):
                 this_tower['y']=sprite.get_y(i['Name'])
             break
 
-points=100000
+points=1000
 def test_pos(clouds):
     if this_tower['this_tower'] !=0:
         global points

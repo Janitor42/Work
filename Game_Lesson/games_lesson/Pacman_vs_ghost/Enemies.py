@@ -4,13 +4,15 @@ import random
 from wrap import sprite
 from random import randint, choice, randrange
 
+place_start_enemies_x = 900
 def create():
-    global l,h
+    global place_start_enemies_x,h
     h=randrange(98,603,83)
-    l=400
-    id = sprite.add("mario-enemies", l, h, 'cloud')
-    # id2 = wrap.sprite.add_text(str(hp), wrap.sprite.get_x(id), wrap.sprite.get_y(id), bold=True, font_size=15)
-    a={"Name": id,  "HP": 1000, "speed ": 3}
+    place_start_enemies_x+=10
+    hp=100
+    id = sprite.add("mario-enemies", place_start_enemies_x, h, 'cloud')
+    text_name = wrap.sprite.add_text(str(hp), wrap.sprite.get_x(id), wrap.sprite.get_y(id), bold=True, font_size=15)
+    a={"Name": id,  "HP": 100, "speed ": 3,'text_name':text_name}
     return a
 
 
@@ -32,3 +34,8 @@ def move_to_sprite(player,enemie,friend):
         if sprite.is_collide_sprite(enemie["Name"],i["Name"]):
             sprite.move_at_angle_point(enemie["Name"],x,y,10)
     sprite.move_to(enemie["Name_text"], sprite.get_x(enemie["Name"]), sprite.get_y(enemie["Name"]))
+
+def move_enemies(enemie):
+    for i in enemie:
+        sprite.move(i['Name'],-0.1,0)
+        sprite.move_to(i['text_name'],sprite.get_x(i['Name']),sprite.get_y(i['Name']))
