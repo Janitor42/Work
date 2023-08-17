@@ -75,11 +75,9 @@ def calks(gamer,plases,text,win):
 
 def calk(value, value2, gamer,plases,text,win):
     for i in plases:
-        if i in plases:
-            if i + value in plases:
-                if i + value2 in plases:
-                    win=win+1
-                    wrap.sprite_text.set_text(text,str(gamer)+' win '+str(win))
+        if i + value in plases and i+value2 in plases:
+            win=win+1
+            wrap.sprite_text.set_text(text,str(gamer)+' win '+str(win))
 
 
 
