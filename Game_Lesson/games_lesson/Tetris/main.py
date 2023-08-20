@@ -9,6 +9,7 @@ import field
 
 world.create_world(800,600)
 menu.create_border()
+
 this=object.Figure(1)
 they=field.Field()
 
@@ -26,12 +27,14 @@ def right():
 def down():
     this.down()
 
-@wrap.always()
+@wrap.always(50)
 def game():
-    this.work_platform(they.work_names)
+    this.work_platform(they.work_fields)
     they.Add_field(this.names)
     this.remove_names()
-    they.Remove_field()
+    they.Add_work_field()
+
+
 
 
 

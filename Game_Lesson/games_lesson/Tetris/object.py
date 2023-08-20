@@ -5,7 +5,8 @@ from wrap import sprite, sprite_text, world
 import menu
 import field
 
-check=False
+check = False
+
 
 class Figure():
     def __init__(self, rd):
@@ -33,25 +34,22 @@ class Figure():
                     y = -30
                     x = 320
 
-
-
     # wrong it's here
-    def work_platform(self,they):
+    def work_platform(self, they):
         global check
         for i in self.names:
             if sprite.is_collide_sprite(i, menu.line3):
                 for g in self.names:
-                    sprite.move_to(g,sprite.get_x(g),sprite.get_y(g)+10)
+                    sprite.move_to(g, sprite.get_x(g), sprite.get_y(g) + 10)
                 check = True
                 break
             for g in they:
-                if sprite.is_collide_sprite(i,g):
-                        check=True
-                        break
+                if sprite.is_collide_sprite(i, g['name']):
+                    check = True
+                    break
         if not check:
             for i in self.names:
                 sprite.move(i, 0, 5)
-
 
     def remove_names(self):
         global check
@@ -61,6 +59,7 @@ class Figure():
             self.names.clear()
             self.__init__(1)  # random value in one for 6
             check = not check
+
     def left(self):
         for i in self.names:
             sprite.move(i, -30, 0)
@@ -91,6 +90,3 @@ class Figure():
                 y += 30
                 x += 30
             self.turn = not self.turn
-
-
-
