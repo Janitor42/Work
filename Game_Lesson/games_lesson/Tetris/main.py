@@ -35,9 +35,5 @@ def game():
     they.Add_work_field()
 
 
-
-
-
-
 import wrap_py
 wrap_py.app.start()
