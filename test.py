@@ -1,10 +1,4 @@
-a=[1,2,3,4,5]
-b=[1,2,3]
+def google(number):
+    print('G'+'o'*number+'gle')
 
-c=[a,b]
-print(c)
-for i in c:
-    print(i)
-
-
-
+google(int(input()))

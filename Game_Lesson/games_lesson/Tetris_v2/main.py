@@ -3,14 +3,14 @@ import time
 import wrap
 from wrap import sprite,sprite_text,world
 import menu
-import object
+import figure
 import field
 
 
 world.create_world(800,612)
 menu.create_border()
 
-this=object.Figure(1)
+this=figure.Figure(1)
 they=field.Field()
 
 
@@ -27,13 +27,13 @@ def right():
 @wrap.on_key_down(wrap.K_s)
 def down():
     this.down()
-
+print(they.fields)
 @wrap.always(50)
 def game():
-    this.Work_platform(they.work_fields)
-    they.Add_field(this.names)
-    this.Remove_figure_and_add_up()
-    they.Remove_and_add_work_field()
+    this.move_figure(they.work_fields)
+    they.add_field(this)
+    this.remove_figure_and_add_up()
+    they.remove_and_add_work_field()
 
 
 

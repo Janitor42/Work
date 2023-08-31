@@ -66,16 +66,12 @@ def calks(gamer,plases,text,win):
     calk(1, 2, gamer,plases,text,win)
     calk(5, 10, gamer,plases,text,win)
     calk(4, 8, gamer,plases,text,win)
-    # for big tic_tac_toe
-    # calk(-1, -2, gamer,plases)
-    # calk(-3, -6, gamer,plases)
-    # calk(-5, -10, gamer,plases)
-    # calk(-4, -8, gamer,plases)
 
 
-def calk(value, value2, gamer,plases,text,win):
-    for i in plases:
-        if i + value in plases and i+value2 in plases:
+
+def calk(value, value2, gamer, places, text, win):
+    for i in places:
+        if i + value in places and i+value2 in places:
             win=win+1
             wrap.sprite_text.set_text(text,str(gamer)+' win '+str(win))
 

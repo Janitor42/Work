@@ -15,6 +15,7 @@ def create_border():
     sprite.set_height(line1, 630)
     sprite.set_height(line2, 630)
     sprite.set_width(line3, 320)
+    sprite.set_height(line3,10)
     borders=[line1,line2,line3]
 
 
